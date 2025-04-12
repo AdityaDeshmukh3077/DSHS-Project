@@ -1,0 +1,17 @@
+*Reason for Admission:*  
+The patient was admitted to the hospital on March 10, 2024, presenting with chest pain (CP) and shortness of breath (SoB), which were significant enough to warrant ambulance transport. An initial electrocardiogram (ECG) showed ST elevation in leads v5-6, suggestive of an acute coronary syndrome. Given these findings, the patient was admitted for further evaluation and management of a suspected ST elevation myocardial infarction (STEMI).
+
+*Hospital Course:*  
+During the hospital stay, the patient underwent further evaluation, including repeat ECGs and laboratory tests. The ECG continued to show persistent ST elevation, confirming the diagnosis of a STEMI involving the left main coronary artery. The hospital's local guidelines recommended percutaneous coronary intervention (PCI); however, attempts to contact the catheterization lab were unsuccessful, and the cardiology team did not respond to pages. Medical management was initiated, including administration of morphine, oxygen therapy, nitroglycerin, and a single dose of aspirin. Troponin T levels were significantly elevated, consistent with myocardial injury. Despite the inability to perform PCI, the patient's symptoms improved with medical management, and by the night of March 12, 2024, the patient reported resolution of chest pain and requested discharge.
+
+*Diagnosis:*  
+The final diagnosis was ST elevation myocardial infarction (STEMI) involving the left main coronary artery. Differential diagnoses such as non-ST elevation myocardial infarction (NSTEMI) were considered but ruled out based on the ECG findings and clinical presentation.
+
+*Condition on Discharge:*  
+At the time of discharge, the patient was clinically stable with resolved chest pain and no shortness of breath. Vital signs were stable, and the patient was hemodynamically stable. The patient was ambulatory and cognitively intact, with no new neurological deficits noted. There were no persisting symptoms of myocardial ischemia.
+
+*Medications on Discharge:*  
+The patient was discharged with instructions to continue aspirin as part of the antiplatelet therapy. Morphine was discontinued as the patient's pain had resolved. Oxygen therapy was no longer required as the patient's oxygen saturation remained above 90%. The patient was advised to continue nitroglycerin as needed for any recurrence of chest pain, with specific instructions on its use.
+
+*Follow-Up and Recommendations:*  
+The patient is advised to follow up with a cardiologist within one week of discharge for further evaluation and management of coronary artery disease. It is crucial to arrange for a stress test or coronary angiography as soon as possible to assess the need for revascularization. The patient should monitor for any recurrence of chest pain, shortness of breath, or other symptoms of cardiac ischemia and seek immediate medical attention if these occur. Additionally, the patient should be monitored for medication adherence and potential side effects. Lifestyle modifications, including dietary changes, smoking cessation, and regular physical activity, should be emphasized to reduce cardiovascular risk factors.

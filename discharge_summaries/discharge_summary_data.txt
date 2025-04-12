@@ -1,0 +1,17 @@
+*Reason for Admission:*  
+The patient was admitted to the hospital on February 10, 2024, presenting with symptoms of cough, shortness of breath, hemoptysis, and fever. These symptoms were suggestive of a respiratory infection, prompting further investigation and management. The patient's background history was significant for these acute respiratory symptoms, leading to the decision for hospital admission to provide appropriate medical care and monitoring.
+
+*Hospital Course:*  
+During the hospital stay, the patient underwent a series of clinical assessments and investigations. Upon admission, vital signs indicated a temperature of 38.5°C, heart rate of 90 bpm, blood pressure of 130/85 mmHg, respiratory rate of 20 breaths/min, and oxygen saturation of 92%. A chest X-ray revealed consolidation in the left lower lobe, consistent with pneumonia. Laboratory tests showed elevated CRP levels at 60 mg/L and a white blood cell count of 12 x10^9/L, supporting the diagnosis of an infection. The patient was started on empirical antibiotic therapy with Amoxicillin IV and received supportive care, including Paracetamol for fever management. Over the course of the admission, the patient demonstrated clinical improvement with a gradual reduction in CRP levels and stabilization of vital signs. By February 13, 2024, the patient's temperature had normalized, and oxygen saturation improved to 98%. The patient was transitioned from intravenous to oral antibiotics as clinical stability was achieved. There were no complications during the hospital stay, and the patient was deemed ready for discharge planning on February 13, 2024.
+
+*Diagnosis:*  
+The final diagnosis was lobar pneumonia, unspecified organism, as indicated by the diagnosis code J18.1. Differential diagnoses such as other respiratory infections were considered but ruled out based on clinical findings and response to treatment.
+
+*Condition on Discharge:*  
+At the time of discharge on February 14, 2024, the patient was clinically stable. Vital signs were within normal limits, with a temperature of 36.5°C, heart rate of 78 bpm, blood pressure of 118/74 mmHg, respiratory rate of 14 breaths/min, and oxygen saturation of 98%. The patient was ambulatory and able to perform activities of daily living independently. There were no cognitive impairments or persisting symptoms noted, indicating a good recovery from the acute illness.
+
+*Medications on Discharge:*  
+Upon discharge, the patient was prescribed Amoxicillin PO, 250 mg daily, to be continued for five more days to complete the antibiotic course. Atorvastatin PO, 20 mg nightly, was continued as part of the patient's chronic medication regimen. Paracetamol was prescribed on an as-needed basis for any residual discomfort or fever. The transition from intravenous to oral antibiotics was made due to the patient's improved clinical status.
+
+*Follow-Up and Recommendations:*  
+The patient is advised to follow up in the outpatient clinic in two weeks to assess recovery and ensure resolution of the pneumonia. It is important to monitor for any signs of recurrence or complications, such as persistent cough, fever, or difficulty breathing, and seek medical attention if these occur. No pending investigations were noted at discharge. The patient should adhere to the prescribed medication regimen and report any adverse reactions to the antibiotics. Community care teams should be aware of the patient's recent hospitalization for pneumonia and provide support as needed to ensure continued recovery and prevent readmission.
