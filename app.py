@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import logging
-from llm import generateResponse, generateResponseUsingRAG
+from llm import generateResponse
 from preprocessing import generatePrompt
 
 # ---------------------- Logging Configuration ----------------------
@@ -34,7 +34,7 @@ with col2:
     with col1:
         include_name = st.checkbox("Include patient name in summary", value=False)
     with col2:
-        use_rag = st.checkbox("Use RAG to generate discharge summary", value=False)
+        use_rag = st.checkbox("Use sample discharge summaries to generate patient discharge summary", value=False)
 
 
     # File Upload Section
@@ -54,9 +54,8 @@ with col2:
                 logging.warning("Summary generation halted: %s", prompt)
             else:
                 # Prompt Viewer and Editor
-                if not use_rag:
-                    st.subheader("🧐 Prompt Preview & Editor")
-                    updatedPrompt = st.text_area("Prompt Used to Generate Discharge Summary:", value=prompt, height=300)
+                st.subheader("🧐 Prompt Preview & Editor")
+                updatedPrompt = st.text_area("Prompt Used to Generate Discharge Summary:", value=prompt, height=300)
 
                 # Generate Button - Centered
                 col1, col2, col3 = st.columns([1, 2, 1])
@@ -65,14 +64,8 @@ with col2:
 
                 # Generate Prompt or Summary
                 if generate_clicked:
-                    if use_rag:
-                        logging.info("Embedded Data sent to RAG")
-                    else :
-                        logging.info("Prompt Sent to LLM:\n%s", updatedPrompt)
-                    if not use_rag:
-                        response = generateResponse(updatedPrompt)
-                    else :
-                        response = generateResponseUsingRAG(data, include_name, instructions)
+                    logging.info("Prompt Sent to LLM:\n%s", updatedPrompt)
+                    response = generateResponse(updatedPrompt, use_rag)
                     logging.info("Response from LLM:\n%s", response)
                     st.subheader("📄 Generated Discharge Summary")
                     st.markdown(response)

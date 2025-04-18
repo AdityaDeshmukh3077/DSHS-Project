@@ -8,6 +8,7 @@ from langchain_community.chat_models import ChatOpenAI
 from langchain_community.document_loaders import TextLoader
 from langchain_core.documents import Document
 from langchain.chains import RetrievalQA
+import os
 
 def generatePatientSummaryForDischargedPatient(data, include_name):
     patientDischargeNotesPresent = checkIfPatientNotesContainDischargeSummary(data)
@@ -70,55 +71,65 @@ def generatePromptForDischargedPatient(data, include_name, instructions) :
     prompt += generalInstructions
     return prompt
 
-def generateResponseUsingRAG(data, include_name, instructions) :
+def generateResponse(prompt, use_rag=False) :
     
-    with open('config.json', 'r') as f:
-        config = json.load(f)
-        generalInstructions = config.get('general_instructions', '')
-    
-    prompt = "You are a clinical assistant responsible for drafting a detailed hospital discharge summary. Use only the patient data provided below. Your output must follow the instructions and formatting guidelines outlined after the patient data. \n\n"
-    rag_chain = useRAGToFetchData(data, include_name)
-    if (instructions is not None) :
-        prompt += "The following instructions need to be followed. Overrule the general instructions if you have to. "
-        prompt += instructions
-        prompt += "\n\n"
-    prompt += generalInstructions
-    result = rag_chain.run(prompt)
-    return result
-
-def useRAGToFetchData(data, include_name):
-    patient_summary = generatePatientSummaryForDischargedPatient(data, include_name)
-    raw_chunks = patient_summary.strip().split("\n\n")
-    
-    # Initialize documents properly
-    if isinstance(raw_chunks[0], str):
-        documents = [Document(page_content=doc) for doc in raw_chunks]
+    if(not use_rag):
+        return basicLLMResponse(prompt)
     else:
-        documents = raw_chunks
-
-    embedding_model = HuggingFaceEmbeddings(model_name="pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb")
-    vectorstore = FAISS.from_documents(documents, embedding_model)
+        return useRAGBasedLLMResponse(prompt)
     
+def load_summaries_from_folder(folder_path):
+    """
+    Loads all .txt files from the given folder into a list of Document objects.
+    """
+    documents = []
+    for filename in os.listdir(folder_path):
+        if filename.endswith(".txt"):
+            file_path = os.path.join(folder_path, filename)
+            with open(file_path, "r", encoding="utf-8") as file:
+                content = file.read().strip()
+                if content:
+                    documents.append(Document(page_content=content, metadata={"source": filename}))
+    return documents
+
+def useRAGBasedLLMResponse(prompt, folder_path="sample_discharge_summaries"):
+    """
+    Uses RAG-based LLM to generate a response based on discharge summary documents.
+    """
+    # Load documents from the folder
+    documents = load_summaries_from_folder(folder_path)
+
+    if not documents:
+        raise ValueError("No valid .txt files found in the folder or the files are empty.")
+
+    # Initialize BioBERT embedding model
+    embedding_model = HuggingFaceEmbeddings(
+        model_name="pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb"
+    )
+
+    # Create a FAISS vector store from the documents
+    vectorstore = FAISS.from_documents(documents, embedding_model)
+
+    # Connect to local LLM via LM Studio
     llm = ChatOpenAI(
         base_url="http://localhost:1234/v1",
-        api_key="lm-studio", 
+        api_key="lm-studio",
         model_name="default",
         temperature=0
     )
-    
+
+    # Set up the retriever and RAG chain
     retriever = vectorstore.as_retriever()
     rag_chain = RetrievalQA.from_chain_type(
         llm=llm,
         retriever=retriever,
         return_source_documents=False
     )
-    
-    return rag_chain
 
-    
+    # Get the LLM response for the input prompt
+    return rag_chain.run(prompt)
 
-def generateResponse(prompt) :
-    
+def basicLLMResponse(prompt):
     client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
     chat_completion = client.chat.completions.create(
     messages=[
