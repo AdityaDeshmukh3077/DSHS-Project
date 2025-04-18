@@ -79,9 +79,6 @@ def generateResponse(prompt, use_rag=False) :
         return useRAGBasedLLMResponse(prompt)
     
 def load_summaries_from_folder(folder_path):
-    """
-    Loads all .txt files from the given folder into a list of Document objects.
-    """
     documents = []
     for filename in os.listdir(folder_path):
         if filename.endswith(".txt"):
@@ -93,40 +90,26 @@ def load_summaries_from_folder(folder_path):
     return documents
 
 def useRAGBasedLLMResponse(prompt, folder_path="sample_discharge_summaries"):
-    """
-    Uses RAG-based LLM to generate a response based on discharge summary documents.
-    """
-    # Load documents from the folder
     documents = load_summaries_from_folder(folder_path)
 
     if not documents:
         raise ValueError("No valid .txt files found in the folder or the files are empty.")
-
-    # Initialize BioBERT embedding model
     embedding_model = HuggingFaceEmbeddings(
         model_name="pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb"
     )
-
-    # Create a FAISS vector store from the documents
     vectorstore = FAISS.from_documents(documents, embedding_model)
-
-    # Connect to local LLM via LM Studio
     llm = ChatOpenAI(
         base_url="http://localhost:1234/v1",
         api_key="lm-studio",
         model_name="default",
         temperature=0
     )
-
-    # Set up the retriever and RAG chain
     retriever = vectorstore.as_retriever()
     rag_chain = RetrievalQA.from_chain_type(
         llm=llm,
         retriever=retriever,
         return_source_documents=False
     )
-
-    # Get the LLM response for the input prompt
     return rag_chain.run(prompt)
 
 def basicLLMResponse(prompt):
