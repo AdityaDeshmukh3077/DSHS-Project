@@ -1,0 +1,37 @@
+Patient Name: Laura Carter
+Age: 84
+Gender: Female
+Medical Record Number (MRN): 35927163
+
+Date of Admission: 2025-04-09
+Date of Discharge: 2025-04-13
+
+Chief Complaint:
+The patient presented to the emergency department with complaints of fever, which had been progressively worsening over the course of several days.
+
+History of Present Illness:
+This is a 84-year-old female with a known history of hypertension and type 2 diabetes mellitus who presented with fever. The onset of symptoms was insidious, beginning approximately 72 hours prior to presentation, and associated with mild systemic manifestations including fatigue and malaise. There were no associated syncopal episodes or neurological deficits noted upon initial examination. The patient's clinical status upon arrival was stable, and initial laboratory workup revealed values within normal limits, except for mildly elevated inflammatory markers.
+
+Past Medical History:
+- Hypertension
+- Type 2 Diabetes Mellitus
+- Hyperlipidemia
+
+Home Medications:
+- acetaminophen, metoprolol, aspirin
+
+Allergies:
+- nuts
+
+Hospital Course:
+During the course of hospitalization, the patient underwent a thorough diagnostic evaluation including imaging and laboratory assessments, which confirmed a diagnosis of COVID-19. The patient was managed conservatively with supportive care and targeted pharmacologic therapy. A multidisciplinary team including internal medicine, pharmacy, and nursing staff collaborated in the management. The patient demonstrated clinical improvement with normalization of vital signs and resolution of presenting symptoms. No complications were encountered during hospitalization.
+
+Discharge Medications:
+The patient was discharged on the following medications:
+- metoprolol, azithromycin, acetaminophen
+
+Discharge Instructions and Follow-Up:
+The patient has been advised to adhere strictly to the prescribed medication regimen and lifestyle modifications. Follow-up has been scheduled with the neurologist within one week post-discharge. The patient has been instructed to return to the emergency department if symptoms recur or worsen.
+
+Discharge Diagnosis:
+Primary diagnosis at discharge: COVID-19
