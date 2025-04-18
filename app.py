@@ -1,7 +1,7 @@
 import streamlit as st
 import json
 import logging
-from llm import generateResponse
+from llm import generateResponse, generateResponseUsingRAG
 from preprocessing import generatePrompt
 
 # ---------------------- Logging Configuration ----------------------
@@ -29,11 +29,13 @@ with col2:
     # Instruction Input
     st.subheader("✏️ Instructions for Summary Generation")
     instructions = st.text_area("Enter any specific instructions to follow while generating the discharge summary:")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        include_name = st.checkbox("Include patient name in summary", value=False)
+    with col2:
+        use_rag = st.checkbox("Use RAG to generate discharge summary", value=False)
 
-    # Checkbox for including patient name
-    st.markdown("<div style='text-align: center; font-weight: bold;'>", unsafe_allow_html=True)
-    include_name = st.checkbox("Include patient name in summary", value=False)
-    st.markdown("</div>", unsafe_allow_html=True)
 
     # File Upload Section
     st.subheader("📁 Upload JSON File")
@@ -44,7 +46,6 @@ with col2:
             data = json.load(json_file)
             st.success("File uploaded successfully!")
             logging.info("JSON file uploaded and parsed successfully.")
-
             callLLM, prompt = generatePrompt(data, include_name, instructions)
 
             if not callLLM:
@@ -53,8 +54,9 @@ with col2:
                 logging.warning("Summary generation halted: %s", prompt)
             else:
                 # Prompt Viewer and Editor
-                st.subheader("🧐 Prompt Preview & Editor")
-                updatedPrompt = st.text_area("Prompt Used to Generate Discharge Summary:", value=prompt, height=300)
+                if not use_rag:
+                    st.subheader("🧐 Prompt Preview & Editor")
+                    updatedPrompt = st.text_area("Prompt Used to Generate Discharge Summary:", value=prompt, height=300)
 
                 # Generate Button - Centered
                 col1, col2, col3 = st.columns([1, 2, 1])
@@ -63,8 +65,14 @@ with col2:
 
                 # Generate Prompt or Summary
                 if generate_clicked:
-                    logging.info("Prompt Sent to LLM:\n%s", updatedPrompt)
-                    response = generateResponse(updatedPrompt)
+                    if use_rag:
+                        logging.info("Embedded Data sent to RAG")
+                    else :
+                        logging.info("Prompt Sent to LLM:\n%s", updatedPrompt)
+                    if not use_rag:
+                        response = generateResponse(updatedPrompt)
+                    else :
+                        response = generateResponseUsingRAG(data, include_name, instructions)
                     logging.info("Response from LLM:\n%s", response)
                     st.subheader("📄 Generated Discharge Summary")
                     st.markdown(response)

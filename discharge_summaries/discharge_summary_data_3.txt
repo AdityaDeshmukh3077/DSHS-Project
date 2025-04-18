@@ -1,1 +1,0 @@
-Patient not safe for discharge based on provided data.
