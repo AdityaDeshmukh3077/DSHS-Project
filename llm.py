@@ -64,8 +64,8 @@ def generatePromptForDischargedPatient(data, include_name, instructions) :
     
     prompt = "You are a clinical assistant responsible for drafting a detailed hospital discharge summary. Use only the patient data provided below. Your output must follow the instructions and formatting guidelines outlined after the patient data. \n\n"
     prompt += generatePatientSummaryForDischargedPatient(data, include_name)
-    if (instructions is not None) :
-        prompt += "The following instructions need to be followed. Overrule the general instructions if you have to. "
+    if instructions and instructions.strip() :
+        prompt += " The following instructions need to be followed. Overrule the general instructions if you have to. "
         prompt += instructions
         prompt += "\n\n"
     prompt += generalInstructions
