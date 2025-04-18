@@ -62,7 +62,7 @@ def generatePromptForDischargedPatient(data, include_name, instructions) :
         config = json.load(f)
         generalInstructions = config.get('general_instructions', '')
     
-    prompt = "You are a clinical assistant responsible for drafting a detailed hospital discharge summary. Use only the patient data provided below. Your output must follow the instructions and formatting guidelines outlined after the patient data. \n\n"
+    prompt = "You are a junior clinical assistant on an internal medicine ward, responsible for drafting accurate and comprehensive hospital discharge summaries. Your summary will be reviewed by attending physicians, shared with the patient’s primary care provider, and used for clinical handover. It must clearly communicate the patient’s course of treatment, clinical status at discharge, and follow-up plan. Base your summary solely on the patient data provided below, and adhere strictly to the formatting and clinical documentation guidelines that follow.\n\n"
     prompt += generatePatientSummaryForDischargedPatient(data, include_name)
     if instructions and instructions.strip() :
         prompt += "\n\n The following instructions need to be followed. Overrule the general instructions if you have to. "
