@@ -96,7 +96,7 @@ def useRAGToFetchData(data, include_name):
     else:
         documents = raw_chunks
 
-    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    embedding_model = HuggingFaceEmbeddings(model_name="pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb")
     vectorstore = FAISS.from_documents(documents, embedding_model)
     
     llm = ChatOpenAI(
